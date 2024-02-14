@@ -1,43 +1,57 @@
 ---
 export const projects = [
     {
-        image: "noti.png",
+        image: "projects/noti.webp",
         title: "Noti",
         description:
-            "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+            "Noti is a note-taking application built in 1 day, serving as an experiment to utilize Vue.js as the frontend.",
         link: "https://noti-xce2.onrender.com/",
+        tags: ["Vuejs", "Django", "Render"],
     },
     {
-        image: "noti.png",
-        title: "Noti",
-        description: "Noti es un TODO list",
-        link: "https://noti-xce2.onrender.com/",
+        image: "projects/cmurman.webp",
+        title: "Murman Fitness",
+        description: "Yoga teacher & ISSA certified trainer website",
+        link: "http://cmurman.com/",
+        tags: ["Wordpress"],
+    },
+    {
+        image: "projects/pypconsultorias.webp",
+        title: "PyPConsultorias",
+        description: "Simple, responsive and usefull landing page.",
+        link: "http://cmurman.com/",
+        tags: ["Wordpress"],
     },
 ];
 ---
 
-<section class="flex flex-col items-center justify-center pt-10">
+<h2 class="text-white text-3xl font-bold leading-none text-center mb-4 pt-6">
+    Happy Customers
+</h2>
+
+<section
+    class="flex flex-row items-center justify-center gap-4 pt-10 flex-wrap"
+>
     {
-        projects.map((project) => (
-            <div class="pt-6">
-                <a
-                    href={project.link}
-                    class="flex flex-col items-center bg-black border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
-                >
-                    <img
-                        class="object-cover w-full rounded-t-lg md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
-                        src={project.image}
-                        alt={project.title}
-                    />
-                    <div class="flex flex-col justify-between p-4 leading-normal">
-                        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-300 dark:text-white">
-                            {project.title}
-                        </h5>
-                        <p class="mb-3 font-normal text-gray-400 dark:text-gray-400">
-                            {project.description}
-                        </p>
-                    </div>
-                </a>
+        projects.map(({ link, image, title, description, tags }, index) => (
+            <div
+                class="max-w-sm rounded overflow-hidden shadow-lg border"
+                style={{ marginBottom: index % 3 === 2 ? "20px" : "0" }}
+            >
+                <img class="w-full" src={image} alt={title} />
+                <div class="px-6 py-4">
+                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-300 dark:text-white">
+                        {title}
+                    </h5>{" "}
+                    <p class="text-gray-700 text-base">{description}</p>
+                </div>
+                <div class="px-6 pt-4 pb-2">
+                    {tags.map((tag, index) => (
+                        <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+                            {`#${tag}`}
+                        </span>
+                    ))}
+                </div>
             </div>
         ))
     }
